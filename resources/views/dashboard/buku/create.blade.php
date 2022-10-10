@@ -8,7 +8,7 @@
       </div>
 
 <div class="col-lg-8">
-    <form method="post" action="/dashboard/posts">
+    <form method="post" action="{{route('simpan-buku')}}">
         @csrf
         <div class="mb-3">
             <label for="NoBook" class="form-label">No Book</label>
@@ -29,7 +29,7 @@
         </div>
         <div class="mb-3">
             <label for="tanggal" class="form-label">Tanggal</label>
-            <input type="tanggal" class="form-control" id="tanggal" name="tanggal">
+            <input type="date" class="form-control" id="tanggal" name="tanggal">
         </div>
        
         <button type="submit" class="btn btn-primary">Submit</button>

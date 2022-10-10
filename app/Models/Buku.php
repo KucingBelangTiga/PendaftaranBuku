@@ -8,7 +8,8 @@ use Cviebrock\EloquentSluggable\Sluggable;
 
 class Buku extends Model
 {
-    use hasFactory, Sluggable;
+    use hasFactory;
+    // use Sluggable;
 
     protected $table = 'buku';
     protected $primaryKey = 'id';

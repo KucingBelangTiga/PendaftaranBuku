@@ -38,7 +38,16 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        Buku::create([
+            'NoBook'=>$request->NoBook,
+            'nama'=>$request->name,
+            'no_hp'=>$request->nohp,
+            'email'=>$request->email,
+            'tanggal_buku'=>$request->tanggal
+        ]);
+
+        return redirect('dashboard/buku');
     }
 
     /**
