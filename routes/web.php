@@ -43,10 +43,10 @@ Route::get('dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
 
-Route::post('/simpan-buku', [DashboardPostController::class,'store'])->name('simpan-buku')->middleware('auth');
-Route::get('/edit-buku/{id}', [DashboardPostController::class,'edit'])->name('edit-buku')->middleware('auth');
-Route::post('/edit-buku/{id}', [DashboardPostController::class,'update'])->name('simpan-buku')->middleware('auth');
+Route::post('/simpan-buku/{id?}', [DashboardPostController::class,'store'])->name('simpan-buku')->middleware('auth');
 Route::get('/delete-buku/{id}', [DashboardPostController::class,'destroy'])->name('delete-buku')->middleware('auth');
+Route::get('/edit-buku/{id}', [DashboardPostController::class,'edit'])->name('edit-buku')->middleware('auth');
+Route::post('/update-buku/{id}', [DashboardPostController::class,'update'])->name('update-buku')->middleware('auth');
 
 Route::resource('/dashboard/buku', DashboardPostController::class)->middleware('auth');
 

@@ -25,7 +25,7 @@ class DashboardPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id = null)
     {
         return view('dashboard.buku.create');
     }
@@ -38,7 +38,6 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         Buku::create([
             'NoBook'=>$request->NoBook,
             'nama'=>$request->name,

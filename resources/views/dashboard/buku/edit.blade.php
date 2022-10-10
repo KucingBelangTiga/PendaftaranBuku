@@ -8,7 +8,7 @@
       </div>
 
 <div class="col-lg-8">
-    <form method="post" action="{{url('edit-buku',$data->id)}}">
+    <form method="post" action="{{url('update-buku',$data->id)}}">
         @csrf
         <div class="mb-3">
             <label for="NoBook" class="form-label">No Book</label>
