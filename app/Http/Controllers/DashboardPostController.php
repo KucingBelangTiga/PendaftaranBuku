@@ -25,7 +25,7 @@ class DashboardPostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id = null)
+    public function create()
     {
         return view('dashboard.buku.create');
     }
@@ -38,12 +38,22 @@ class DashboardPostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        $validatedData = $request->validate([
+            // 'name' => 'required|max:255|unique:users',
+            'NoBook' => 'required|min:5|max:5',
+            'name' => 'required|min:5|max:255',
+            'nohp' => 'required|min:5|max:255',
+            'email' => 'required|email:dns',
+            'tanggal' => 'required',
+        ]);
+
         Buku::create([
-            'NoBook'=>$request->NoBook,
-            'nama'=>$request->name,
-            'no_hp'=>$request->nohp,
-            'email'=>$request->email,
-            'tanggal_buku'=>$request->tanggal
+            'NoBook'=>$validatedData['NoBook'],
+            'nama'=>$validatedData['name'],
+            'no_hp'=>$validatedData['nohp'],
+            'email'=>$validatedData['email'],
+            'tanggal_buku'=>$validatedData['tanggal'],
         ]);
 
         return redirect('dashboard/buku')->with('success', 'Data berhasil tersimpan');
@@ -86,7 +96,23 @@ class DashboardPostController extends Controller
     public function update(Request $request, $id)
     {
         $data = Buku::findorfail($id);
-        $data->update($request->all());
+
+        $validatedData = $request->validate([
+            // 'name' => 'required|max:255|unique:users',
+            'NoBook' => 'required|min:5|max:5',
+            'nama' => 'required|min:5|max:255',
+            'no_hp' => 'required|min:5|max:255',
+            'email' => 'required|email:dns',
+            'tanggal_buku' => 'required',
+        ]);
+
+        $data->update([
+            'NoBook'=>$validatedData['NoBook'],
+            'nama'=>$validatedData['nama'],
+            'no_hp'=>$validatedData['no_hp'],
+            'email'=>$validatedData['email'],
+            'tanggal_buku'=>$validatedData['tanggal_buku'],
+        ]);
 
         return redirect('dashboard/buku')->with('success', 'Data berhasil terupdate');
     }

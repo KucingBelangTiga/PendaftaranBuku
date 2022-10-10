@@ -12,24 +12,49 @@
         @csrf
         <div class="mb-3">
             <label for="NoBook" class="form-label">No Book</label>
-            <input type="text" class="form-control" id="NoBook" aria-describedby="NoBook" name="NoBook" value="{{$data->NoBook}}">
+            <input type="text" class="form-control @error('NoBook') is-invalid @enderror" id="NoBook" aria-describedby="NoBook" name="NoBook" value="{{$data->NoBook}}">
             <div id="NoBook" class="form-text"></div>
+            @error('NoBook')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="name" class="form-label">Nama Pemilik</label>
-            <input type="text" class="form-control" id="nama" name="nama" value="{{$data->nama}}">
+            <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{$data->nama}}">
+            @error('nama')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="no_hp" class="form-label">No HP</label>
-            <input type="text" class="form-control" id="no_hp" name="no_hp" value="{{$data->no_hp}}">
+            <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" value="{{$data->no_hp}}">
+            @error('no_hp')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{$data->email}}">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{$data->email}}">
+            @error('email')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="tantanggal_bukugal" class="form-label">Tanggal</label>
-            <input type="date" class="form-control" id="tanggal_buku" name="tanggal_buku" value="{{$data->tanggal_buku}}">
+            <input type="date" class="form-control @error('tanggal_buku') is-invalid @enderror" id="tanggal_buku" name="tanggal_buku" value="{{$data->tanggal_buku}}">
+            @error('tanggal_buku')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
        
         <button type="submit" class="btn btn-primary">Submit</button>
