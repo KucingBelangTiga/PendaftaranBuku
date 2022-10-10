@@ -7,6 +7,7 @@
       </div>
 
       <div class="table-responsive">
+        <a href="/dashboard/buku/create" class="btn btn-success mb-2">Create New Post</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
