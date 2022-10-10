@@ -6,8 +6,14 @@
         
       </div>
 
+    @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
       <div class="table-responsive">
-        <a href="/dashboard/buku/create" class="btn btn-success mb-2">Create New Post</a>
+        <a href="/dashboard/buku/create" class="btn btn-success mb-2">Tambah Buku</a>
         <table class="table table-striped table-sm">
           <thead>
             <tr>
@@ -28,11 +34,12 @@
                 <td>{{ $b->no_hp }}</td>
                 <td>{{$b->email}}</td>
                 <td>
-                    <a class="btn btn-danger" href="dashboard/buku/delete/{{$b->slug}}">Delete</a>
-                    <a class="btn btn-primary" href="dashboard/buku/edit/{{$b->slug}}">Edit</a>
+                    <a class="btn btn-danger" href="{{url('delete-buku',$b->id)}}">Delete</a>
+                    <a class="btn btn-primary" href="{{url('edit-buku',$b->id)}}">Edit</a>
                 </td>
                 </tr>
             @endforeach
           </tbody>
         </table>
+
 @endsection

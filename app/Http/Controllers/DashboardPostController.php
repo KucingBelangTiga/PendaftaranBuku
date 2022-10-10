@@ -47,7 +47,7 @@ class DashboardPostController extends Controller
             'tanggal_buku'=>$request->tanggal
         ]);
 
-        return redirect('dashboard/buku');
+        return redirect('dashboard/buku')->with('success', 'Data berhasil tersimpan');
     }
 
     /**
@@ -69,9 +69,12 @@ class DashboardPostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id=0)
     {
-        //
+        $data = Buku::findorfail($id);
+       return view('dashboard.buku.edit',[
+        'data'=>$data,
+       ]);
     }
 
     /**
@@ -83,7 +86,10 @@ class DashboardPostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Buku::findorfail($id);
+        $data->update($request->all());
+
+        return redirect('dashboard/buku')->with('success', 'Data berhasil terupdate');
     }
 
     /**
@@ -94,6 +100,9 @@ class DashboardPostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Buku::findorfail($id);
+        $data->delete();
+
+        return back()->with('success', 'Data berhasil dihapus');
     }
 }
