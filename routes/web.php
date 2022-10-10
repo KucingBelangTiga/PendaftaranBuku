@@ -43,7 +43,7 @@ Route::get('dashboard', function(){
     return view('dashboard.index');
 })->middleware('auth');
 
-Route::post('/simpan-buku', [DashboardPostController::class,'store'])->name('simpan-buku');
+Route::post('/simpan-buku', [DashboardPostController::class,'store'])->name('simpan-buku')->middleware('auth');
 
 
 Route::resource('/dashboard/buku', DashboardPostController::class)->middleware('auth');
